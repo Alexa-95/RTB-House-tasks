@@ -1,6 +1,9 @@
 const api_url = 'http://rekrutacjartb.pl/developer/banner.json';
 
-const list_div = document.getElementById('items_container');
+const list_div = document.getElementsByClassName('items_container');
+
+const task_1 = document.getElementById('task_1');
+const task_2 = document.getElementById('task_2');
 
 // Defining async function
 async function getapi(url) {
@@ -21,20 +24,25 @@ getapi(api_url);
 
 // Function to define innerHTML
 function show(data) {
-	const arr = data.offers
-	console.log(arr)
-	arr.forEach(e => {
-		let item = document.createElement('div');
-		item.classList.add('item')
-		item.innerHTML = `
-            <img src="${e.imgURL}" alt="${e.name}" class="item_img" />
-            <span class="item_title">${e.name}</span>
-            <span class="item_price">
-                <span>${e.price}</span>
-                <span> ${e.currency}</span>
-            </span>
-        `;
+	
+	const arr = data.offers;
 
-		list_div.appendChild(item);
+	[...list_div].forEach((task) => {
+		let random = arr.sort((a, b) => 0.5 - Math.random()).slice(0,task.getAttribute("value"));
+		let id = task.getAttribute("id");
+
+		random.forEach(e => {
+			let item = document.createElement('div');
+			item.classList.add('item')
+			item.innerHTML = `
+				<img src="${e.imgURL}" alt="${e.name}" class="item_img" />
+				<span class="item_title">${e.name}</span>
+				<span class="item_price">
+					<span>${e.price}</span>
+					<span> ${e.currency}</span>
+				</span>
+			`;
+			document.getElementById(id).appendChild(item);
+		})
 	})
 }

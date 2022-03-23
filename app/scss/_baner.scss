@@ -1,29 +1,46 @@
-#main_container{
-  background-color: $white;
-}
-#items_container{
-  background-color: $white;
-  padding: 5px;
 
-  .item{
-    border: 1px solid $ltGray;
-    margin: 5px;
+.task_container{
+  background-color: $white;
+  &.box_1{
+    // width: 300px;
+    // height: 250px;
+    // border: 1px solid $ltGray;
+  }
+  &.box_2{
+    // display: none;
+  }
+  .items_container{
     padding: 5px;
-    max-width: 150px;
-    width: 100%;
-  }
-  .item_img{
-    display: block;
-    width: 100%;
-    height: initial;
-    object-fit: contain;
-  }
-  .item_title, .item_price{
-    display: block;
-    text-align: center;
-  }
-  .item_price{
-    font-weight: 700;
+    .item{
+      border: 1px solid $ltGray;
+      max-width: 150px;
+      width: 100%;
+    }
+    .item_img{
+      display: block;
+      width: 100%;
+      height: initial;
+      object-fit: contain;
+      object-position: center;
+    }
+    .item_title, .item_price{
+      display: block;
+      text-align: center;
+    }
+    .item_price{
+      font-weight: 700;
+    }
+    &#task_1{
+      width: 300px;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: repeat(2,1fr);
+      gap: 5px;
+
+      .item_img{
+        height: 70px;
+      }
+    }  
   }
 }
 .logo_container{
