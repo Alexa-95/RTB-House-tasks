@@ -13,3 +13,28 @@ In this proejct, Gulp is configured to run the following functions:
 * Uglify the JS files
 * Move final CSS and JS files to the `/dist` folder
  
+
+
+## Task 1
+
+Stwórz banner w formacie 300x250. Wylosuj z pliku JSON cztery oferty. Układ bannera ma być taki jak na załączonym przykładzie (banner.jpg). 
+
+Dodaj animacje "skaczącej ramki" - co dwie sekundy border oferty ma przeskakiwać na następną. Z ostatniej oferty ramka powinna przeskakiwać z powrotem na pierwszą.
+
+Obrazki i cena + waluta powinny być zaczytywane z pliku JSON: http://rekrutacjartb.pl/developer/banner.json
+Logo: http://rekrutacjartb.pl/developer/images/logo_rtb.png
+
+## Task 2
+
+Stwórz banner w formacie 160x600. Wylosuj z pliku JSON trzy oferty. Układ bannera ma być taki jak na załączonym przykładzie (banner.jpg). 
+
+Banner powinien być w formie slidera. 
+
+Dane powinny być zaczytywane z pliku JSON: http://rekrutacjartb.pl/developer/banner.json
+Logo: http://rekrutacjartb.pl/developer/images/logo_rtb.png
+
+## Task 3.
+
+Zaprogramuj counter, który zlicza ilość czasu pozostałego np. do końca promocji (od dnia dzisiejszego do analogicznej daty tydzień później) w formie "Do końca pozostało: DD-HH-MM".
+
+Dodaj warunki, które wyłączą ilość dni/godzin w momencie kiedy wynoszą 0.
