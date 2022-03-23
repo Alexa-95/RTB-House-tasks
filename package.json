@@ -1,0 +1,34 @@
+{
+  "name": "simple-baner-design-js",
+  "version": "1.0.0",
+  "description": "Simple front-end web desing using ",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Datenshi666/RTB-House-tasks"
+  },
+  "keywords": [
+    "gulp",
+    "html",
+    "css",
+    "javascript",
+    "json"
+  ],
+  "author": "Aleksandra Sobanska",
+  "license": "ISC",
+  "homepage": "https://github.com/Datenshi666/RTB-House-tasks#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "autoprefixer": "^10.2.6",
+    "browser-sync": "^2.27.9",
+    "cssnano": "^5.0.6",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-replace": "^1.1.3",
+    "gulp-sass": "^5.0.0",
+    "gulp-terser": "^2.0.1",
+    "postcss": "^8.3.5",
+    "sass": "^1.35.2"
+  }
+}
