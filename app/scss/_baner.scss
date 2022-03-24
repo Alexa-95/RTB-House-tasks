@@ -2,19 +2,57 @@
 .task_container{
   background-color: $white;
   &.box_1{
-    // width: 300px;
-    // height: 250px;
-    // border: 1px solid $ltGray;
+    width: 300px;
+    height: 250px;
+    border: 1px solid $ltGray;
+
+    .logo_container{
+      width: 220px;
+      margin: 0 auto;
+    }
   }
   &.box_2{
-    // display: none;
+    display: grid;
+    grid-template-rows: 1fr 70px;
+    width: 160px;
+    height: 600px;
+    overflow: hidden;
+
+    .logo_container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70px;
+      width: 140px;
+      margin: 0 auto;
+    }
+  }
+  &.box_3{
+    width: fit-content;
+    padding: 10px 25px;
+
+    .count_date{
+      font-size: 24px;
+      font-weight: 500;
+      color: $mainAccent;
+      #counter{
+        color: $extraAccent;
+      }
+    }
   }
   .items_container{
+    position: relative;
     padding: 5px;
     .item{
       border: 1px solid $ltGray;
       max-width: 150px;
       width: 100%;
+      background-color: $white;
+
+      &.activeBorder{
+        border: 1px solid $mainAccent;
+        outline: 1px solid $mainAccent;
+      }
     }
     .item_img{
       display: block;
@@ -26,19 +64,70 @@
     .item_title, .item_price{
       display: block;
       text-align: center;
+      height: fit-content;
+      margin: auto;
+      font-size: 12px;
+    }
+    .item_title{
+      font-weight: 400;
     }
     .item_price{
       font-weight: 700;
+    }
+    .close{
+      display: block;
+      width: 100%;
+      padding: 5px;
+      text-align: right;
+      color: $ltGray;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .action_btn{
+      display: block;
+      margin: auto;
+      background-color: $mainAccent;
+      color: $white;
+      border: unset;
+      font-size: 16px;
+      padding: 8px 10px;
+      width: 110px;
+      transition: background-color 0.1s ease-in-out;
+      cursor: pointer;
+
+      &:hover{
+        background-color: darken($color: $mainAccent, $amount: 10);
+      }
     }
     &#task_1{
       width: 300px;
       display: grid;
       grid-template-columns: repeat(2,1fr);
       grid-template-rows: repeat(2,1fr);
-      gap: 5px;
+      gap: 2px;
 
       .item_img{
         height: 70px;
+        margin: 5px 0;
+      }
+    }
+    &#task_2{
+      .item{
+        position: absolute;
+        display: grid;
+        grid-template-columns: 1;
+        grid-template-rows: 25px 210px 110px 110px 65px; 
+        transition: transform 0.5s ease;
+        transform: translateX(160px);
+        z-index: 0;
+        
+        &.activeSlider{
+          transform: translateX(0);
+          z-index: 2;
+        }
+      }
+      .item_img{
+        height: 210px;
       }
     }  
   }

@@ -13,9 +13,8 @@ async function getapi(url) {
 
 	// Storing data in form of JSON
 	const data = await response.json();
-	console.log(data);
 	if (response) {
-		console.log(response.status)
+		console.log(response.status);		
 	}
 	show(data);
 }
@@ -32,17 +31,49 @@ function show(data) {
 		let id = task.getAttribute("id");
 
 		random.forEach(e => {
+			console.log(task)
 			let item = document.createElement('div');
-			item.classList.add('item')
-			item.innerHTML = `
+			item.classList.add('item');
+
+			if(task.getAttribute("id") === task_1.getAttribute("id")){
+				item.innerHTML = `
 				<img src="${e.imgURL}" alt="${e.name}" class="item_img" />
-				<span class="item_title">${e.name}</span>
 				<span class="item_price">
 					<span>${e.price}</span>
 					<span> ${e.currency}</span>
 				</span>
 			`;
+			}
+			else if(task.getAttribute("id") === task_2.getAttribute("id")){
+				item.innerHTML = `
+				<span class="close">x</span>
+				<img src="${e.imgURL}" alt="${e.name}" class="item_img" />
+				<span class="item_title">${e.name}</span>
+				<span class="item_price">
+					<span>${e.price}</span>
+					<span> ${e.currency}</span>
+					</span>
+				<button class="action_btn">Check</button>
+			`;
+			}
+			else{
+				//show all data
+				item.innerHTML = `
+					<img src="${e.imgURL}" alt="${e.name}" class="item_img" />
+					<span class="item_title">${e.name}</span>
+					<span class="item_price">
+						<span>${e.price}</span>
+						<span> ${e.currency}</span>
+					</span>
+				`;
+			}
 			document.getElementById(id).appendChild(item);
-		})
-	})
+		});
+		if(task.getAttribute("id") === task_1.getAttribute("id")){
+			showActiveBorder();
+		}
+		if(task.getAttribute("id") === task_2.getAttribute("id")){
+			showSlider();
+		}
+	});
 }
