@@ -5,7 +5,7 @@
 * Run `npm install`
 * Run `gulp` to run the default Gulp task
 
-**If you have any issues with access to fetch data from origin by CORS policy, please install plugin for your browser ex. Allow CORS: Access-Control-Allow-Origin**
+**If you have any issues with access to fetch data from origin by CORS policy, please install extension for your web browser eg. Allow CORS: Access-Control-Allow-Origin**
 
 In this proejct, Gulp is configured to run the following functions:
 
