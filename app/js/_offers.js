@@ -1,41 +1,38 @@
-const api_url = 'http://rekrutacjartb.pl/developer/banner.json';
-
-const list_div = document.getElementsByClassName('items_container');
-
-const task_1 = document.getElementById('task_1');
-const task_2 = document.getElementById('task_2');
-
 // Defining async function
 async function getapi(url) {
+	try {
+		// Storing response
+		const response = await fetch(url);
 
-	// Storing response
-	const response = await fetch(url);
-
-	// Storing data in form of JSON
-	const data = await response.json();
-	if (response) {
-		console.log(response.status);		
+		// Storing data in form of JSON
+		const data = await response.json();
+		if (response) {
+			console.log(response.status);
+		}
+		show(data);
+	} catch (err) {
+		console.log(err);
 	}
-	show(data);
 }
-// Calling that async function
-getapi(api_url);
 
 // Function to define innerHTML
 function show(data) {
-	
+
+	// Define JSON data to array
 	const arr = data.offers;
 
-	[...list_div].forEach((task) => {
-		let random = arr.sort((a, b) => 0.5 - Math.random()).slice(0,task.getAttribute("value"));
+	// Loop for each task container, set items in random order, get first N elements where N is value
+	[...app.list_div].forEach((task) => {
+		let random = arr.sort((a, b) => 0.5 - Math.random()).slice(0, task.getAttribute("value"));
 		let id = task.getAttribute("id");
 
+		// Create new div for every element
 		random.forEach(e => {
-			console.log(task)
 			let item = document.createElement('div');
 			item.classList.add('item');
 
-			if(task.getAttribute("id") === task_1.getAttribute("id")){
+			// Define innerHTML for task_1 item
+			if (task.getAttribute("id") === app.task_1.getAttribute("id")) {
 				item.innerHTML = `
 				<img src="${e.imgURL}" alt="${e.name}" class="item_img" />
 				<span class="item_price">
@@ -44,7 +41,8 @@ function show(data) {
 				</span>
 			`;
 			}
-			else if(task.getAttribute("id") === task_2.getAttribute("id")){
+			// Define innerHTML for task_2
+			else if (task.getAttribute("id") === app.task_2.getAttribute("id")) {
 				item.innerHTML = `
 				<span class="close">x</span>
 				<img src="${e.imgURL}" alt="${e.name}" class="item_img" />
@@ -55,9 +53,8 @@ function show(data) {
 					</span>
 				<button class="action_btn">Check</button>
 			`;
-			}
-			else{
-				//show all data
+			} else {
+				// Define innerHTML for other tasks, show all data
 				item.innerHTML = `
 					<img src="${e.imgURL}" alt="${e.name}" class="item_img" />
 					<span class="item_title">${e.name}</span>
@@ -69,10 +66,12 @@ function show(data) {
 			}
 			document.getElementById(id).appendChild(item);
 		});
-		if(task.getAttribute("id") === task_1.getAttribute("id")){
+		//Start animating border for items in task_1
+		if (task.getAttribute("id") === app.task_1.getAttribute("id")) {
 			showActiveBorder();
 		}
-		if(task.getAttribute("id") === task_2.getAttribute("id")){
+		//Start slider for items in task_2
+		if (task.getAttribute("id") === app.task_2.getAttribute("id")) {
 			showSlider();
 		}
 	});

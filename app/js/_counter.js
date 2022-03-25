@@ -1,18 +1,20 @@
-const counter = document.getElementById('counter');
-
 //Set how full time to countdown, default 7 days
 let daysCount = 7;
 let hoursCount = 0;
 let minutesCount = 0;
 let secoundsCount = 0;
 
-const timeToCount = (daysCount * 24 * 60 * 60 * 1000) + (hoursCount * 60 * 60 * 1000) + (minutesCount * 60 * 1000) + (secoundsCount * 24 * 60 * 60 * 1000);
- 
+const timeToCount = (daysCount * 24 * 60 * 60 * 1000) + (hoursCount * 60 * 60 * 1000) +
+  (minutesCount * 60 * 1000) + (secoundsCount * 24 * 60 * 60 * 1000);
+
+// Day that start counting days
+let firstDay = new Date("March 25, 2022 12:00:00").getTime();
+
 // Set the date we're counting down to
-let countDownDate = new Date().setTime(new Date().getTime() + timeToCount) ;
+let countDownDate = firstDay + timeToCount;
 
 // Update the count down every 1 second
-const countToDate = setInterval(function() {
+const countToDate = setInterval(function () {
   // Get today's date and time
   const now = new Date().getTime();
 
@@ -26,17 +28,17 @@ const countToDate = setInterval(function() {
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Display the result in counter
-  counter.innerHTML = days + "d " + hours + "h "
-  + minutes + "m ";
+  app.counter.innerHTML = ((days) ? days + "d " : '') + ((hours) ? hours + "h " : '') +
+    ((minutes) ? minutes + "m" : '');
 
   // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(countToDate);
-    counter.innerHTML = "END";
+    app.counter.innerHTML = "Sorry, the sale is over";
   }
   // Hide mark on every even number of seconds
-  else{
+  else {
     const dot = document.getElementById('dot');
-    (seconds%2 !== 0) ? dot.style.opacity="0" : dot.style.opacity="1";
+    (seconds % 2 !== 0) ? dot.style.opacity = "0": dot.style.opacity = "1";
   }
 }, 1000);
